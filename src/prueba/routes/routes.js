@@ -1,10 +1,15 @@
 const express = require("express");
-const { verRegistros, urlInexistente } = require("../controllers/controllers");
+const { City } = require("../model/model");
+const { PruebaController, PruebaService, PruebaRepository } = require("../module/module");
 
 const routes = express.Router();
 
-routes.get("/prueba", verRegistros);
-routes.use("*", urlInexistente);
+const model = City;
+const repository = new PruebaRepository(model);
+const service = new PruebaService(repository);
+const controller = new PruebaController(service);
+
+routes.get("/prueba", controller.verRegistros.bind(controller));
 
 module.exports = {
   routes,
