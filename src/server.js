@@ -1,5 +1,5 @@
 const express = require("express");
-const { HOST, PORT } = require("./config/config");
+const { HOST, PORT } = require("./config/configDi");
 const { routes } = require("./prueba/routes/routes");
 
 const server = express();
