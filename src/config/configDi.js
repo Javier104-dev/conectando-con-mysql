@@ -13,7 +13,7 @@ const {
   modelDB,
 } = require("../prueba/module/module");
 
-const configSequelize = () => {
+const configureSequelize = () => {
   const config = new Sequelize(
     process.env.DATABASE_NAME,
     process.env.DATABASE_USER,
@@ -33,26 +33,36 @@ const configSequelize = () => {
   return config;
 };
 
-const configModel = (container) => {
-  const config = container.get("sequelize");
+const configureModel = (container) => {
+  const config = container.get("Sequelize");
   const model = modelDB(config);
   return model;
 };
 
-const configDi = () => {
-  const container = new DIContainer();
-  container.add({
-    sequelize: factory(configSequelize),
-    model: factory(configModel),
-    PruebaRepository: object(PruebaRepository).construct(use("model")),
+const addCommonDefinitions = (constainer) => {
+  constainer.add({
+    Sequelize: factory(configureSequelize),
+    Model: factory(configureModel),
+  });
+};
+
+const addPruebaModuleDefinitions = (constainer) => {
+  constainer.add({
+    PruebaRepository: object(PruebaRepository).construct(use("Model")),
     PruebaService: object(PruebaService).construct(use("PruebaRepository")),
     PruebaController: object(PruebaController).construct(use("PruebaService")),
   });
+};
+
+const configureDI = () => {
+  const container = new DIContainer();
+  addCommonDefinitions(container);
+  addPruebaModuleDefinitions(container);
   return container;
 };
 
 module.exports = {
   HOST: process.env.SERVER_HOST,
   PORT: process.env.SERVER_PORT,
-  configDi,
+  configureDI,
 };

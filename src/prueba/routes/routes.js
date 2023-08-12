@@ -1,11 +1,14 @@
 const express = require("express");
-const { configDi } = require("../../config/configDi");
 
-const controller = configDi().get("PruebaController");
 const routes = express.Router();
 
-routes.get("/ciudad", controller.verRegistros.bind(controller));
+const configureRoutes = (container) => {
+  const controller = container.get("PruebaController");
+  routes.get("/ciudad", controller.verRegistros.bind(controller));
+  routes.get("/ciudad/:id", controller.verRegistro.bind(controller));
+  return routes;
+};
 
 module.exports = {
-  routes,
+  configureRoutes,
 };

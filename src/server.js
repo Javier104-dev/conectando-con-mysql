@@ -1,13 +1,16 @@
 const express = require("express");
 const { HOST, PORT } = require("./config/configDi");
-const { routes } = require("./prueba/routes/routes");
+const { configureRoutes } = require("./prueba/routes/routes");
+const { configureDI } = require("./config/configDi");
 
 const server = express();
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
-server.use(routes);
+const container = configureDI();
+
+server.use(configureRoutes(container));
 
 server.listen(PORT, HOST, () => {
   // eslint-disable-next-line no-console
