@@ -1,35 +1,39 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 
-const modelDB = (db) => {
-  const City = db.define(
-    "city",
-    {
-      city_id: {
-        type: DataTypes.SMALLINT,
-        unique: true,
-        autoIncrement: true,
-        primaryKey: true,
-      },
-      city: {
-        type: DataTypes.STRING(50),
-      },
-      country_id: {
-        type: DataTypes.SMALLINT,
-        unique: true,
-      },
-      last_update: {
-        type: DataTypes.DATE,
-      },
-    },
-    {
-      tableName: "city",
-      timestamps: false,
-    },
-  );
+class PruebaModel extends Model {
 
-  return City;
-};
+  static setup(sequelizeInstance) {
+    PruebaModel.init(
+      {
+        city_id: {
+          type: DataTypes.SMALLINT,
+          unique: true,
+          autoIncrement: true,
+          primaryKey: true,
+        },
+        city: {
+          type: DataTypes.STRING(50),
+        },
+        country_id: {
+          type: DataTypes.SMALLINT,
+          unique: true,
+        },
+        last_update: {
+          type: DataTypes.DATE,
+        },
+      },
+      {
+        sequelize: sequelizeInstance,
+        tableName: "city",
+        modelName: "Model",
+        timestamps: false,
+      },
+    );
+
+    return PruebaModel;
+  }
+}
 
 module.exports = {
-  modelDB,
+  PruebaModel,
 };

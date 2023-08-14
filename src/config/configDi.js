@@ -10,7 +10,7 @@ const {
   PruebaController,
   PruebaService,
   PruebaRepository,
-  modelDB,
+  PruebaModel,
 } = require("../prueba/module/module");
 
 const configureSequelize = () => {
@@ -33,24 +33,23 @@ const configureSequelize = () => {
   return config;
 };
 
-const configureModel = (container) => {
-  const config = container.get("Sequelize");
-  const model = modelDB(config);
-  return model;
+const configurePruebaModel = (container) => {
+  PruebaModel.setup(container.get("Sequelize"));
+  return PruebaModel;
 };
 
 const addCommonDefinitions = (constainer) => {
   constainer.add({
     Sequelize: factory(configureSequelize),
-    Model: factory(configureModel),
   });
 };
 
 const addPruebaModuleDefinitions = (constainer) => {
   constainer.add({
-    PruebaRepository: object(PruebaRepository).construct(use("Model")),
-    PruebaService: object(PruebaService).construct(use("PruebaRepository")),
     PruebaController: object(PruebaController).construct(use("PruebaService")),
+    PruebaService: object(PruebaService).construct(use("PruebaRepository")),
+    PruebaRepository: object(PruebaRepository).construct(use("PruebaModel")),
+    PruebaModel: factory(configurePruebaModel),
   });
 };
 
@@ -65,4 +64,5 @@ module.exports = {
   HOST: process.env.SERVER_HOST,
   PORT: process.env.SERVER_PORT,
   configureDI,
+  configureSequelize,
 };
