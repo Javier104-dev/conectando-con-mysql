@@ -11,12 +11,14 @@ class PruebaModel extends Model {
           autoIncrement: true,
           primaryKey: true,
         },
-        city: {
-          type: DataTypes.STRING(50),
+        nombre: {
+          type: DataTypes.STRING(100),
         },
-        country_id: {
-          type: DataTypes.SMALLINT,
-          unique: true,
+        apellido: {
+          type: DataTypes.STRING(100),
+        },
+        ciudad: {
+          type: DataTypes.STRING(100),
         },
         last_update: {
           type: DataTypes.DATE,
@@ -24,8 +26,8 @@ class PruebaModel extends Model {
       },
       {
         sequelize: sequelizeInstance,
-        tableName: "city",
-        modelName: "Model",
+        tableName: "pruebas",
+        modelName: "Prueba",
         timestamps: false,
       },
     );

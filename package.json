@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --watch --no-warnings ./src/server.js"
+    "start": "node --watch --no-warnings ./src/server.js",
+    "schema:sync": "node ./src/cli/init.db.js"
   },
   "author": "",
   "license": "ISC",
