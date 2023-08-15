@@ -1,4 +1,4 @@
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model, Sequelize } = require("sequelize");
 
 class PruebaModel extends Model {
 
@@ -20,8 +20,13 @@ class PruebaModel extends Model {
         ciudad: {
           type: DataTypes.STRING(100),
         },
-        last_update: {
+        createdAt: {
           type: DataTypes.DATE,
+          defaultValue: Sequelize.NOW,
+        },
+        lastUpdated: {
+          type: DataTypes.DATE,
+          defaultValue: Sequelize.NOW,
         },
       },
       {

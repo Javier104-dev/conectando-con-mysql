@@ -1,3 +1,5 @@
+const { fromModelToEntity } = require("../mapper/pruebaMapper");
+
 class PruebaRepository {
 
   constructor(pruebaModel) {
@@ -6,7 +8,8 @@ class PruebaRepository {
 
   async verRegistros() {
     const registros = await this.pruebaModel.findAll();
-    return registros;
+    const mapper = registros.map((element) => fromModelToEntity(element));
+    return mapper;
   }
 
   async verRegistro(id) {
@@ -14,7 +17,11 @@ class PruebaRepository {
 
     if (!registro) throw new Error(`No se pudo encontrar una ciudad con el id:${id}`);
 
-    return registro;
+    return fromModelToEntity(registro);
+  }
+
+  async eliminarRegistro(id) {
+    return this.pruebaModel.destroy({ where: { city_id: id } });
   }
 }
 

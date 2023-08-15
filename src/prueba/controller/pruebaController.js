@@ -25,6 +25,18 @@ class PruebaController {
       res.status(500).json({ error: error.message });
     }
   }
+
+  async eliminarRegistro(req, res) {
+    const { id } = req.params;
+
+    try {
+      const confirmacion = await this.pruebaService.eliminarRegistro(id);
+      res.status(200).json({ msg: "eliminado", confirmacion });
+
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 }
 
 module.exports = {
