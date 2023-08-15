@@ -1,3 +1,4 @@
+const { Prueba } = require("../entity/prueba");
 const { fromModelToEntity } = require("../mapper/pruebaMapper");
 
 class PruebaRepository {
@@ -13,15 +14,25 @@ class PruebaRepository {
   }
 
   async verRegistro(id) {
-    const registro = await this.pruebaModel.findOne({ where: { city_id: id } });
+    const registro = await this.pruebaModel.findOne({ where: { id } });
 
-    if (!registro) throw new Error(`No se pudo encontrar una ciudad con el id:${id}`);
+    if (!registro) throw new Error(`No se pudo encontrar una ciudad con el id: ${id}`);
 
     return fromModelToEntity(registro);
   }
 
-  async eliminarRegistro(id) {
-    return this.pruebaModel.destroy({ where: { city_id: id } });
+  async save(registro) {
+    const pruebaModel = this.pruebaModel.build(registro, { isNewRecord: !registro.id });
+
+    await pruebaModel.save();
+
+    return fromModelToEntity(pruebaModel);
+  }
+
+  async eliminarRegistro(registro) {
+    if (!(registro instanceof Prueba)) throw new Error("El registro no es tiene formato valido");
+
+    return this.pruebaModel.destroy({ where: { id: registro.id } });
   }
 }
 

@@ -1,3 +1,5 @@
+const { fromFormToEntity } = require("../mapper/pruebaMapper");
+
 class PruebaController {
 
   constructor(pruebaService) {
@@ -26,12 +28,29 @@ class PruebaController {
     }
   }
 
+  async save(req, res) {
+    const registro = fromFormToEntity(req.body);
+
+    try {
+      const savedRegistro = await this.pruebaService.save(registro);
+      if (registro.id) {
+        res.status(200).json({ msg: "registro actualizado", savedRegistro });
+      } else {
+        res.status(200).json({ msg: "registro creado con exito", registro });
+      }
+
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
   async eliminarRegistro(req, res) {
     const { id } = req.params;
 
     try {
-      const confirmacion = await this.pruebaService.eliminarRegistro(id);
-      res.status(200).json({ msg: "eliminado", confirmacion });
+      const registro = await this.pruebaService.verRegistro(id);
+      await this.pruebaService.eliminarRegistro(registro);
+      res.status(200).json({ msg: "eliminado", registro });
 
     } catch (error) {
       res.status(500).json({ error: error.message });

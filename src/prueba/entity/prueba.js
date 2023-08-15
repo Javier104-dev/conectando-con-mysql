@@ -2,14 +2,14 @@
 class Prueba {
 
   constructor(
-    city_id,
+    id,
     nombre,
     apellido,
     ciudad,
     createdAt,
     lastUpdated,
   ) {
-    this.city_id = city_id;
+    this.id = id;
     this.nombre = nombre;
     this.apellido = apellido;
     this.ciudad = ciudad;

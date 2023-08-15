@@ -5,7 +5,7 @@ class PruebaModel extends Model {
   static setup(sequelizeInstance) {
     PruebaModel.init(
       {
-        city_id: {
+        id: {
           type: DataTypes.SMALLINT,
           unique: true,
           autoIncrement: true,
@@ -24,7 +24,7 @@ class PruebaModel extends Model {
           type: DataTypes.DATE,
           defaultValue: Sequelize.NOW,
         },
-        lastUpdated: {
+        updatedAt: {
           type: DataTypes.DATE,
           defaultValue: Sequelize.NOW,
         },

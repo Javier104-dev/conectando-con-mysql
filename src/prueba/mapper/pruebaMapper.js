@@ -2,30 +2,30 @@
 const { Prueba } = require("../entity/prueba");
 
 const fromModelToEntity = ({
-  city_id,
+  id,
   nombre,
   apellido,
   ciudad,
   createdAt,
-  lastUpdated,
+  updatedAt,
 
 }) => new Prueba(
-  Number(city_id),
+  id,
   nombre,
   apellido,
   ciudad,
   createdAt,
-  lastUpdated,
+  updatedAt,
 );
 
 const fromFormToEntity = ({
-  city_id,
+  id,
   nombre,
   apellido,
   ciudad,
 
 }) => new Prueba(
-  Number(city_id),
+  Number(id),
   nombre,
   apellido,
   ciudad,

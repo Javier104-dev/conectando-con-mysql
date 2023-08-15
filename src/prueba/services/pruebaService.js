@@ -1,3 +1,5 @@
+const { Prueba } = require("../entity/prueba");
+
 class PruebaService {
 
   constructor(pruebaRepository) {
@@ -16,10 +18,16 @@ class PruebaService {
     return registro;
   }
 
-  async eliminarRegistro(id) {
-    if (!id) throw new Error("El id no esta definido");
+  async save(registro) {
+    if (registro === undefined) throw new Error("El registro no es tiene formato valido");
 
-    return this.pruebaRepository.eliminarRegistro(id);
+    return this.pruebaRepository.save(registro);
+  }
+
+  async eliminarRegistro(registro) {
+    if (!(registro instanceof Prueba)) throw new Error("El registro no es tiene formato valido");
+
+    return this.pruebaRepository.eliminarRegistro(registro);
   }
 }
 
