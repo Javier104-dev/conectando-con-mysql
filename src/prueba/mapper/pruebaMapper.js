@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const { Prueba } = require("../entity/prueba");
 
 const fromModelToEntity = ({
