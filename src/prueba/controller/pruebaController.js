@@ -34,9 +34,9 @@ class PruebaController {
     try {
       const savedRegistro = await this.pruebaService.save(registro);
       if (registro.id) {
-        res.status(200).json({ msg: "registro actualizado", savedRegistro });
+        res.status(200).json({ msg: `Registro con id: ${registro.id} actualizado con exito` });
       } else {
-        res.status(200).json({ msg: "registro creado con exito", registro });
+        res.status(200).json({ msg: "Registro creado con exito", savedRegistro });
       }
 
     } catch (error) {
