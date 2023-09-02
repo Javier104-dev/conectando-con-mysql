@@ -10,8 +10,6 @@ server.use(express.urlencoded({ extended: true }));
 
 const container = configureDI();
 
-prueba;
-
 server.use(configureRoutes(container));
 
 server.listen(PORT, HOST, () => {
