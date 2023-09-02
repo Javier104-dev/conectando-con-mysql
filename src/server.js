@@ -9,6 +9,8 @@ server.use(express.urlencoded({ extended: true }));
 
 server.use(routes);
 
+prueba;
+
 server.listen(PORT, HOST, () => {
   // eslint-disable-next-line no-console
   console.log(`http://${HOST}:${PORT}/prueba`);
