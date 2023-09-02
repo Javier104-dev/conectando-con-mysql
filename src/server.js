@@ -9,7 +9,7 @@ server.use(express.urlencoded({ extended: true }));
 
 server.use(routes);
 
-const pruebas = null;
+const asdasdasdasd;
 
 server.listen(PORT, HOST, () => {
   // eslint-disable-next-line no-console
