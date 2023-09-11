@@ -38,14 +38,14 @@ const configurePruebaModel = (container) => {
   return PruebaModel;
 };
 
-const addCommonDefinitions = (constainer) => {
-  constainer.add({
+const addCommonDefinitions = (container) => {
+  container.add({
     Sequelize: factory(configureSequelize),
   });
 };
 
-const addPruebaModuleDefinitions = (constainer) => {
-  constainer.add({
+const addPruebaModuleDefinitions = (container) => {
+  container.add({
     PruebaController: object(PruebaController).construct(use("PruebaService")),
     PruebaService: object(PruebaService).construct(use("PruebaRepository")),
     PruebaRepository: object(PruebaRepository).construct(use("PruebaModel")),
