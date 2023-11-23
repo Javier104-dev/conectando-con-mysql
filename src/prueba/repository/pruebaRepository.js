@@ -30,7 +30,7 @@ class PruebaRepository {
   }
 
   async eliminarRegistro(registro) {
-    if (!(registro instanceof Prueba)) throw new Error("El registro no es tiene formato valido");
+    if (!(registro instanceof Prueba)) throw new Error("El registro no es una instancia de la clase Prueba");
 
     return this.pruebaModel.destroy({ where: { id: registro.id } });
   }

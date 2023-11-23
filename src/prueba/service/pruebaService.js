@@ -19,13 +19,13 @@ class PruebaService {
   }
 
   async save(registro) {
-    if (registro === undefined) throw new Error("El registro no es tiene formato valido");
+    if (registro === undefined) throw new Error("El registro no tiene un formato valido");
 
     return this.pruebaRepository.save(registro);
   }
 
   async eliminarRegistro(registro) {
-    if (!(registro instanceof Prueba)) throw new Error("El registro no es tiene formato valido");
+    if (!(registro instanceof Prueba)) throw new Error("El registro no es una instancia de la clase Prueba");
 
     return this.pruebaRepository.eliminarRegistro(registro);
   }
