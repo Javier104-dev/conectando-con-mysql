@@ -200,6 +200,7 @@ Si `no posee un ID`, Sequelize entenderá que esa entidad no existe y creara su 
 - Descargar o clonar el repositorio.
 - Instalar las dependencias necesarias con el comando `npm install`.
 - En la raíz del proyecto crear un archivo `.env`, copiar las variables de entorno que se encuentran en el archivo `.env.dist` y reemplazar su valor siguiendo las indicaciones.
+- Sincronizar los modelos creados con la base de datos con el comando `npm run schema:sync`.
 - Correr el comando `npm start` para iniciar el servidor en modo desarrollo.
 - Usar la URL base `http://127.0.0.1:8080/ciudad` para interactuar con el servidor.
 
