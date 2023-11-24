@@ -18,13 +18,13 @@
 ### Proyecto de prueba
 Este es un proyecto prueba que hice para comenzar a usar MyQSL y conectarlo al servidor mediante el uso de `Sequelize`. Solamente se hizo la conexión con una base de datos de prueba llamada `sakila` y una tabla que guardaba entidades de ciudades y personas.
 
+Entidad utilizada
 ``` json
-// Entidad utilizada
 {
   "id": 1,
   "nombre": "Damian",
   "apellido": "Gomez",
-  "ciudad": null,
+  "ciudad": "Buenos Aires",
   "createdAt": "2023-09-29T18:29:12.000Z",
   "lastUpdated": "2023-09-29T18:29:12.000Z"
 }
@@ -158,7 +158,6 @@ Si `no posee un ID`, Sequelize entenderá que esa entidad no existe y creara su 
 - Parámetros requeridos del BODY
   - **"nombre"="Matias"**: *(tipo: string. Establece el valor del nombre)*
   - **"apellido"="Abollo"**: *(tipo: string. Establece el valor del apellido)*
-  - **"ciudad"="Buenos Aires"**: *(tipo: string. Establece el valor de la ciudad)*
 
 **Response**
   - Código **HTTP 200** Ok: *Registro con id: 1 actualizado con exito*
