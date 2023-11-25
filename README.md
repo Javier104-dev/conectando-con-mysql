@@ -56,13 +56,12 @@ Las capas para destacar podrían ser las de controller, service, repository y mo
 <h2 align='center'>Métodos HTTP y ejemplos</h2>
 
 ### Métodos utilizados en el proyecto
-| Tipo   | URI                              | Descripción                                      |
-| ------ | -------------------------------- | ------------------------------------------------ |
-| GET    | http://127.0.0.1:8080/ciudad     | Obtiene los registros de las ciudades            |
-| GET    | http://127.0.0.1:8080/ciudad/:id | Obtiene el registro de una ciudad en específico  |
-| POST   | http://127.0.0.1:8080/ciudad     | Crea un registro de una nueva ciudad             |
-| PUT    | http://127.0.0.1:8080/ciudad:id  | Modifica el registro de una ciudad en específico |
-| DELETE | http://127.0.0.1:8080/ciudad:id  | Elimina el registro de una ciudad en específico  |
+| Tipo   | URI                              | Descripción                                     |
+| ------ | -------------------------------- | ----------------------------------------------- |
+| GET    | http://127.0.0.1:8080/ciudad     | Obtiene los registros de las ciudades           |
+| GET    | http://127.0.0.1:8080/ciudad/:id | Obtiene el registro de una ciudad en específico |
+| POST   | http://127.0.0.1:8080/ciudad     | Crea o actualiza un registro de ciudad          |
+| DELETE | http://127.0.0.1:8080/ciudad/:id | Elimina el registro de una ciudad en específico |
 
 ### Método GET
 **Request**
@@ -139,8 +138,8 @@ Las capas para destacar podrían ser las de controller, service, repository y mo
     ```
   - Código **HTTP 500**: *El registro no tiene un formato valido*;
 
-### Método PUT
-Aquí utilizamos la `logica de Sequelize` para usar la misma URI del método POST, dependiendo de si la entidad que enviamos posee un ID.
+### Método PUT usando POST
+Usamos el método POST y su URI para actualizar un registro, con la `lógica de Sequelize` podremos identificar y saber que hacer con los datos recibidos, dependiendo de si posee o no ID.
 
 Si `posee un ID`, Sequelize usara la entidad para modificar un registro existente con ese ID.
 <br>
