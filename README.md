@@ -151,8 +151,8 @@ Si `no posee un ID`, Sequelize entenderá que esa entidad no existe y creara su 
   http://127.0.0.1:8080/ciudad
   ```
 
-- Parámetro obligatorio de tipo URL
-  - **1**: *(tipo: integer. Indica el id de al ciudad que se requiere modificar)*
+- Parámetro obligatorio del BODY
+  - **"id"=1**: *(tipo: integer. Indica el id de al ciudad que se requiere modificar)*
 
 - Parámetros requeridos del BODY
   - **"nombre"="Matias"**: *(tipo: string. Establece el valor del nombre)*
